@@ -1,0 +1,7 @@
+-cd numa pasta dentro da pasta q tem vários códigos (uma pasta só pra o repo)
+-da clone no repo com git clone "repo"
+-da config com o --global (só uma vez na vida) (user.name) (user.email)
+
+-da git add . para adicionar o arquivo na lista de commit
+-git commit -m "mensagem" pra adicionar todos os arquivos q tão na lista de commit
+-git push -u origin main pra adicionar os arquivos do commit no arquivo de origen na branch main
