@@ -1,0 +1,126 @@
+pessoas = []
+comidas = []
+bebidas = []
+
+def menu_principal():
+    lnha = str(['-' for x in range(8)]).replace('[', '').replace(']', '').replace(' ', '').replace("'", '').replace(',', '')
+
+    print(f'{lnha}\nDigite o número correspondente:\n1- Cadastro \n2- Ver lista de convidados\n3- Modificar\n4- Deletar cadastro\n{lnha}')
+    try:
+        resp = int(input('>>> '))
+        if resp == 1:
+            cadastro()
+        elif resp == 2:
+            listar_participantes()
+        elif resp == 3:
+            atualizar()
+        elif resp == 4:
+            deletar()
+        elif resp > 4:
+            print("Digite um número de 1 a 4")
+    except ValueError:
+        print("Digite um número de 1 a 4")
+
+    
+def cadastro():
+    global pessoas, comidas, bebidas
+    nome_temp = str(input("Qual o seu nome: "))
+    if verificacaooooooo(nome_temp):
+        return
+    comida_temp = str(input("Qual e a sua comida: "))
+    if verificacaooooooo(comida_temp):
+        return
+    bebida_temp = str(input("Qual e a sua bebida: "))
+    if verificacaooooooo(bebida_temp):
+        return
+    pessoas.append(nome_temp)
+    comidas.append(comida_temp)
+    bebidas.append(bebida_temp)
+    
+    print('Pessoa cadastrada com sucesso.')
+
+def listar_participantes():
+    global pessoas, comidas, bebidas
+    try:
+        pessoas[0]
+    except IndexError:
+        print('Não há ninguém cadastrado')
+    for l in range(len(pessoas)):
+        print(f"\nNome: {pessoas[l]}\nComida: {comidas[l]}\nBebida: {bebidas[l]}")
+
+def atualizar():#Separar atualizações
+    global pessoas, comidas, bebidas
+    try:
+        pessoas[0]
+    except IndexError:
+        print('Não há ninguem cadastrado')
+        return
+    print('O que você deseja alterar?\n1-Comida\n2-Bebida')
+    try:
+        alterar = int(input('>>> '))
+    except ValueError:
+        print('Insira uma opção válida (número 1 ou número 2)')
+        return
+    if alterar != 1 and alterar != 2:
+        print('opção inválida')
+        return
+    for n in range(len(pessoas)):
+        print(f'{n}- {pessoas[n]}')
+
+    pessoasss = -1
+    while pessoasss == -1:
+        try:
+            pessoasss = int(input('De quem você deseja alterar? >>> '))
+            pessoas[n]
+        except ValueError:
+            print('Insira um número')
+            pessoasss = -1
+        except IndexError:
+            print('Essa pessoa não existe')
+            pessoasss = -1
+    
+    
+    if alterar == 1:
+        tmp = comidas[pessoasss]
+        comidas[pessoasss] = input('Qual a nova comida? >>> ')
+        if verificacaooooooo(comidas[pessoasss]):
+            comidas[pessoasss] = tmp
+    elif alterar == 2:
+        tmp = bebidas[pessoasss]
+        bebidas[pessoasss] = input('Qual a nova bebida? >>> ')
+        if verificacaooooooo(bebidas[pessoasss]):
+            bebidas[pessoasss] = tmp
+    pessoasss = -1
+
+    print('Cadastro atualizado com sucesso.')
+
+
+def deletar():
+    global pessoas, comidas, bebidas
+    try:
+        pessoas[0]
+    except IndexError:
+        print('Não há ninguem cadastrado')
+        return
+    for n in range(len(pessoas)):
+        print(f'{n}- {pessoas[n]}')
+    try:
+        pessoasssss = int(input('De quem você deseja apagar? >>> '))
+    except ValueError:
+        print('Insira um número correspondente.')
+        return
+    pessoas.pop(pessoasssss)
+    comidas.pop(pessoasssss)
+    bebidas.pop(pessoasssss)
+    print('Cadastro apagado com sucesso.')
+
+def verificacaooooooo(tx):
+    if tx.replace(' ', '').isalpha() == False:
+        print('Coloque um texto')
+        return True
+    
+     
+while True:
+    if __name__ == '__main__':
+        menu_principal()
+
